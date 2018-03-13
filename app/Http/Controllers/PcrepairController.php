@@ -14,7 +14,12 @@ class PcrepairController extends Controller
      */
     public function index()
     {
-      return Pcrepair::all();
+         $fix=Pcrepair::all();
+        foreach ($fix as $item ) {
+          $item ->uid=$item->uid()->first()->name;
+
+
+        }return  $fix;
     }
 
     /**
