@@ -41,4 +41,10 @@ class Pcrepair extends Model
     return $this->hasone('App\User','id','uid');
 
   }
+
+  public function category(){
+
+    return $this->hasone('App\category','id','category');
+
+  }
 }
