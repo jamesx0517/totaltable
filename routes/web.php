@@ -19,9 +19,15 @@ Route::get('/application', function () {
     return view('application');
 });
 
-Route::get('/pcrepairs', 'PcrepairController@index');
-Route::get('/pcrepairs/{id}', 'PcrepairController@show');
-Route::post('/pcrepairs', 'PcrepairController@store');
+Route::get('/pcrepairs', function() {
+    return view('form');
+});
+
+Route::get('/pcrepairs/{id}', function($id) {
+    return view('repairs-single', [
+        'id' => $id
+    ]);
+});
 
 Auth::routes();
 

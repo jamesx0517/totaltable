@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('script')
+
+
+
 @endsection
 @section('content')
 <div class="container">
@@ -13,7 +16,7 @@
                         @csrf
 
                         <div class="form-group row">
-
+                        
 
                         </div>
 
