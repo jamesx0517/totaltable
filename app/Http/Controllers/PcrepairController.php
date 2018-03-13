@@ -17,9 +17,9 @@ class PcrepairController extends Controller
          $fix=Pcrepair::all();
         foreach ($fix as $item ) {
           $item ->uid=$item->uid()->first()->name;
-
-
-        }return  $fix;
+          $item ->category=$item->category()->first()->name;
+      }
+        return  $fix;
     }
 
     /**
