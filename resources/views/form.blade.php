@@ -23,7 +23,7 @@ $(function() {
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>維修查詢</h1>
-        <table class="table" >
+        <table class="table" style="width: 770px;" >
             <thead>
                 <tr>
                     <th>單號</th>
