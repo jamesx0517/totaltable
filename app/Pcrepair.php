@@ -35,4 +35,10 @@ class Pcrepair extends Model
   protected $hidden = [
 
   ];
+
+  public function uid(){
+
+    return $this->hasone('App\User','id','uid');
+
+  }
 }
