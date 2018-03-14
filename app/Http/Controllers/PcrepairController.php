@@ -12,9 +12,9 @@ class PcrepairController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-         $fix=Pcrepair::all();
+         $fix=Pcrepair::simplePaginate(10);
         foreach ($fix as $item ) {
           $item ->uid=$item->uid()->first()->name;
           $item ->category=$item->category()->first()->name;
@@ -47,9 +47,7 @@ class PcrepairController extends Controller
                     'project'=>'required',
                     'nature'=>'required',
                     'note'=>'required',
-                    'enddate'=>'required',
-                    'status'=>'required',
-                    'it'=>'required',
+
                     'title'=>'required',
                   ]);
 
