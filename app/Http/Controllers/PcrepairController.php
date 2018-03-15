@@ -14,12 +14,15 @@ class PcrepairController extends Controller
      */
     public function index(Request $request)
     {
-         $fix=Pcrepair::simplePaginate(10);
-        foreach ($fix as $item ) {
+         $repair=Pcrepair::simplePaginate(10);
+        foreach ($repair as $item ) {
           $item ->uid=$item->uid()->first()->name;
-          $item ->category=$item->category()->first()->name;
+          $item ->project=$item->project()->first()->name;
+          $item ->pid=$item->department()->first()->name;
+          $item ->it=$item->it()->first()->name;
+          $item ->status=$item->status()->first()->name;
       }
-        return  $fix;
+        return  $repair;
     }
 
     /**
@@ -47,7 +50,8 @@ class PcrepairController extends Controller
                     'project'=>'required',
                     'nature'=>'required',
                     'note'=>'required',
-
+                    'status'=>'required',
+                    'it'=>'required',
                     'title'=>'required',
                   ]);
 
