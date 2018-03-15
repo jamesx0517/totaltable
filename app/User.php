@@ -26,4 +26,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function id(){
+
+      return $this->hasone('App\Pcrepair','uid','id');
+
+
+    }
 }
