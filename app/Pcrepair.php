@@ -40,11 +40,30 @@ class Pcrepair extends Model
 
     return $this->hasone('App\User','id','uid');
 
+
   }
 
-  public function category(){
+  public function project(){
 
-    return $this->hasone('App\category','id','category');
+    return $this->hasone('App\project','id','project');
 
+  }
+
+  public function department(){
+
+    return $this->hasone('App\department','id','pid');
+
+  }
+
+  public function it(){
+
+    return $this->hasone('App\it','id','it');
+                              //外來鍵 ,表內欄位
+  }
+
+  public function status(){
+
+    return $this->hasone('App\status','id','status');
+                              //外來鍵 ,表內欄位
   }
 }
