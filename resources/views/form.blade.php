@@ -28,7 +28,7 @@ $(function() {
 
         for( var index in resp.data) {
             var obj = resp.data[index];
-            $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+ obj.pid + '</td><td>'+ obj.uid + '</td><td>'+ obj.date + '</td><td><a href="/pcrepairs/' + obj.id + '">'+ obj.title + '</a></td><td>'+ obj.category + '</td><td>'+ obj.status + '</td><td>'+ obj.it + '</td><td>'+ obj.enddate + '</td></tr>');
+            $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+ obj.pid + '</td><td>'+ obj.uid + '</td><td>'+ obj.date + '</td><td><a href="/pcrepairs/' + obj.id + '">'+ obj.title + '</a></td><td>'+ obj.project + '</td><td>'+ obj.status + '</td><td>'+ obj.it + '</td><td>'+ obj.enddate + '</td></tr>');
         }
 
 
@@ -55,7 +55,7 @@ $('#btn-pre').attr('href', resp.prev_page_url.replace('api/', ''));
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>維修查詢</h1>
-        <table class="table" style="width: 770px;" >
+        <table class="table" style="width: 880px;" >
             <thead>
                 <tr>
                     <th>單號</th>
@@ -63,7 +63,7 @@ $('#btn-pre').attr('href', resp.prev_page_url.replace('api/', ''));
                     <th>申請人</th>
                     <th>申請日期</th>
                     <th>主旨</th>
-                    <th>總類</th>
+                    <th>維修項目</th>
                     <th>處理進度</th>
                     <th>指派人</th>
                     <th>結案日期</th>
