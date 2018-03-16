@@ -7,10 +7,16 @@ $(function() {
         console.log(data);
         $('#id').html(data.id);
         $('#date').html(data.date);
-        $('#title').html(data.title);
         $('#pid').html(data.pid);
+        $('#uid').html(data.uid);
+        $('#project').html(data.project);
+        $('#title').html(data.title);
         $('#note').html(data.note);
-        $('#body').append('<hr>' + data.created_at);
+        $('#status').html(data.status);
+        $('#it').html(data.it);
+        $('#enddate').html(data.enddate);
+
+
     });
 });
 </script>
@@ -21,26 +27,26 @@ $(function() {
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>維修查詢</h1>
-        <table class="table" style="width: 880px;">
+        <table class="table" style="width: 750px;">
             <thead>
                 <tr>
-                    <th>單號</th>
-                    <th>申請單位</th>
-                    <th>申請人</th>
-                    <th>申請日期</th>
-                    <th>主旨</th>
-                    <th>維修項目</th>
-                    <th>需求性質</th>
-                    <th>處理進度</th>
-                    <th>指派人</th>
-                    <th>結案日期</th>
+                    <th >申請日期</th><th id='date'></th>
+                    <th>單號</th>  <th id='id'></th>
+                    <th>申請單位</th><th id='pid'></th>
+                    <th>申請人</th><th id='uid'></th><tr>
+                    <th>維修項目</th><th id='project'></th>
+                    <th>需求性質</th><tr>
+                    <th>主旨</th>  <th id='title'>主旨</th><tr>
+
                 </tr>
             </thead>
-            <tbody id="tbody">
-<td><h2 id= id></h2></td>
-<td><h3 id= pid></h3></td>
-
-            </tbody>
+          </table>
+          <h1>內容</h1>
+          <h1 id= 'note'></h1>
+          <table class="table" style="width: 750px;">
+            <th>處理進度</th> <th id='status'>主旨</th>
+            <th>指派人</th> <th id='it'>主旨</th>
+            <th>結案日期</th> <th id='enddate'>主旨</th>
         </table>
     </div>
 </div>
