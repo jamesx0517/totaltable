@@ -70,15 +70,15 @@ class PcrepairController extends Controller
      */
     public function show($id)
     {
-        $fix=Pcrepair::findOrFail($id);
-    /* foreach ($fix as $item ) {
+        $item=Pcrepair::findOrFail($id);
+
          $item ->uid=$item->uid()->first()->name;
          $item ->project=$item->project()->first()->name;
          $item ->pid=$item->department()->first()->name;
          $item ->it=$item->it()->first()->name;
          $item ->status=$item->status()->first()->name;
-}*/
-       return  $fix;
+
+       return  $item;
     }
 
     /**
