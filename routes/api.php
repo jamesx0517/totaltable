@@ -17,5 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/pcrepairs', 'PcrepairController@index');
+
 Route::get('/pcrepairs/{id}', 'PcrepairController@show');
+
 Route::post('/pcrepairs', 'PcrepairController@store');
