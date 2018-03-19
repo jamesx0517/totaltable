@@ -13,7 +13,9 @@ class PcrepairController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
+    { /*$repair=Pcrepair::where('pid',2)->paginate(10);
+                              pid(單位)=2 */
+
          $repair=Pcrepair::simplePaginate(10);
         foreach ($repair as $item ) {
           $item ->uid=$item->uid()->first()->name;
@@ -77,6 +79,7 @@ class PcrepairController extends Controller
          $item ->pid=$item->department()->first()->name;
          $item ->it=$item->it()->first()->name;
          $item ->status=$item->status()->first()->name;
+         $item ->nature=$item->nature()->first()->name;
 
        return  $item;
     }
