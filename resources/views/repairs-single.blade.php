@@ -15,7 +15,7 @@ $(function() {
         $('#status').html(data.status);
         $('#it').html(data.it);
         $('#enddate').html(data.enddate);
-
+        $('#nature').html(data.nature);
 
     });
 });
@@ -35,7 +35,7 @@ $(function() {
                     <th>申請單位</th><th id='pid'></th>
                     <th>申請人</th><th id='uid'></th><tr>
                     <th>維修項目</th><th id='project'></th>
-                    <th>需求性質</th><tr>
+                    <th>需求性質</th><th id='nature'><tr>
                     <th>主旨</th>  <th id='title'>主旨</th><tr>
 
                 </tr>
@@ -45,7 +45,8 @@ $(function() {
           <h1 id= 'note'></h1>
           <table class="table" style="width: 750px;">
             <th>處理進度</th> <th id='status'>主旨</th>
-            <th>指派人</th> <th id='it'>主旨</th>
+
+            <th>指派人</th> <th id = 'it' ></th>
             <th>結案日期</th> <th id='enddate'>主旨</th>
         </table>
     </div>
