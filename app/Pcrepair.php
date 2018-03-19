@@ -68,9 +68,9 @@ class Pcrepair extends Model
                               //外來鍵 ,表內欄位
   }
 
-  /*public function nature(){
+  public function nature(){
 
     return $this->hasone('App\nature','id','nature');
                               //外來鍵 ,表內欄位
-  }*/
+  }
 }
