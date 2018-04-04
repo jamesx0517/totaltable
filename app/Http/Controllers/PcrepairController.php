@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pcrepair;
+use App\project;
+use App\nature;
 use Validator;
 class PcrepairController extends Controller
 {
@@ -13,19 +15,22 @@ class PcrepairController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    { /*$repair=Pcrepair::where('pid',2)->paginate(10);
-                              pid(單位)=2 */
+    {  /*
+      $repair=Pcrepair::orderBy('id', 'desc')->where('pid',2)->simplePaginate(10);
+          /*                排序                     單位=2           分頁*/
 
-         $repair=Pcrepair::simplePaginate(10);
-        foreach ($repair as $item ) {
+         $repair=Pcrepair::orderBy('id', 'desc')->simplePaginate(10);
+          foreach ($repair as $item ) {
           $item ->uid=$item->uid()->first()->name;
           $item ->project=$item->project()->first()->name;
           $item ->pid=$item->department()->first()->name;
           $item ->it=$item->it()->first()->name;
           $item ->status=$item->status()->first()->name;
-      }
+      }    //item 的status要等於 item  呼叫  status() 帶入name
         return  $repair;
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -44,8 +49,10 @@ class PcrepairController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {     $validator=Validator::make($request->all() , [
-                    'date'=>'required',
+    {
+
+      $validator=Validator::make($request->all() , [
+
                     'uid'=>'required',
                     'pid'=>'required',
                     'category'=>'required',
@@ -61,8 +68,8 @@ class PcrepairController extends Controller
             if( $validator->fails()){
               return ['erros'=>$validator->errors()];
             }
-          return Pcrepair::create($request->all());
-    }
+      return    Pcrepair::create($request->all());
+  }
 
     /**
      * Display the specified resource.
@@ -79,10 +86,21 @@ class PcrepairController extends Controller
          $item ->pid=$item->department()->first()->name;
          $item ->it=$item->it()->first()->name;
          $item ->status=$item->status()->first()->name;
-         $item ->nature=$item->nature()->first()->name;
+         $item ->nature =$item->nature()->first()->name;
 
        return  $item;
     }
+
+    public function it($id)
+    {
+        $item=Pcrepair::findOrFail($id);
+
+
+       return  $item;
+    }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
