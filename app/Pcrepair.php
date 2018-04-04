@@ -14,14 +14,14 @@ class Pcrepair extends Model
    * @var array
    */
   protected $fillable = [
-      'date',
+
       'uid',
       'pid',
       'category',
       'project',
       'nature',
       'note',
-      'enddate',
+    
       'status',
       'it',
       'title',
