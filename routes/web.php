@@ -29,6 +29,15 @@ Route::get('/pcrepairs/{id}', function($id) {
     ]);
 });
 
+Route::get('/it/{id}', function($id) {
+    return view('case ', [
+        'id' => $id
+    ]);
+});
+Route::patch('/it/{id}','PcrepairController@itEdit');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('Pcrepair', 'PcrepairController');
