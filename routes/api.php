@@ -20,4 +20,8 @@ Route::get('/pcrepairs', 'PcrepairController@index');
 
 Route::get('/pcrepairs/{id}', 'PcrepairController@show');
 
+Route::get('/select/{id}', 'PcrepairController@it');
+
 Route::post('/pcrepairs', 'PcrepairController@store');
+
+Route::get('/userregister', 'DepartmentController@index');
