@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('script')
 <script>
+var pid=  {{ Auth::user()->pid }};
 function getQueryParams(qs) {
     qs = qs.split('+').join(' ');
 
@@ -27,10 +28,18 @@ $(function() {
     $.getJSON('/api/pcrepairs' + page, function(resp) {
 
         for( var index in resp.data) {
-            var obj = resp.data[index];
-            $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+ obj.pid + '</td><td>'+ obj.uid + '</td><td>'+ obj.date + '</td><td><a href="/pcrepairs/' + obj.id + '">'+ obj.title + '</a></td><td>'+ obj.project + '</td><td>'+ obj.status + '</td><td>'+ obj.it + '</td><td>'+ obj.enddate + '</td></tr>');
-        }
 
+          var obj = resp.data[index];
+          if (pid == 1){
+            $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+ obj.pid + '</td><td>'+ obj.uid + '</td><td>'+ obj.created_at + '</td><td>'+ obj.title + '</td><td>'+ obj.project + '</td><td>'+ obj.status + '</td><td>'+ obj.it + '</td><td>'+ obj.updated_at + '</td><td><a class="btn btn-primary" id=test  href="/it/' + obj.id + '">詳情</a></td></tr>');
+          }
+          else{
+            $('#tbody').append('<tr><td>' + obj.id + '</td><td>'+ obj.pid + '</td><td>'+ obj.uid + '</td><td>'+ obj.created_at + '</td><td>'+ obj.title + '</td><td>'+ obj.project + '</td><td>'+ obj.status + '</td><td>'+ obj.it + '</td><td>'+ obj.updated_at + '</td><td><a class="btn btn-primary" id=test  href="/pcrepairs/' + obj.id + '">詳情</a></td></tr>');
+          }
+
+
+
+        }
 
 if( resp.next_page_url == null ) {
     $('#btn-next').hide();
@@ -47,6 +56,9 @@ $('#btn-next').attr('href', resp.next_page_url.replace('api/', ''));
 $('#btn-pre').attr('href', resp.prev_page_url.replace('api/', ''));
 });
 });
+
+
+
 </script>
 
 @endsection
@@ -55,7 +67,7 @@ $('#btn-pre').attr('href', resp.prev_page_url.replace('api/', ''));
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>維修查詢</h1>
-        <table class="table" style="width: 880px;" >
+        <table class="table" style="width: 1200px;" >
             <thead>
                 <tr>
                     <th>單號</th>
@@ -66,7 +78,8 @@ $('#btn-pre').attr('href', resp.prev_page_url.replace('api/', ''));
                     <th>維修項目</th>
                     <th>處理進度</th>
                     <th>指派人</th>
-                    <th>結案日期</th>
+                    <th>最後更新日期</th>
+                    <th>--</th>
                 </tr>
             </thead>
             <tbody id="tbody">
