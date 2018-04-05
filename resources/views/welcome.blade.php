@@ -71,15 +71,15 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">登入</a>
+                        <a href="{{ route('register') }}">帳號註冊</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    阿 電腦壞了 我要修電腦
                 </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
