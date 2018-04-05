@@ -2,23 +2,37 @@
 @section('script')
 <script>
 var post_id = {{ $id }};
+var itx;
+var status;
 $(function() {
     $.getJSON('/api/pcrepairs/' + post_id, function(data) {
         console.log(data);
         $('#id').html(data.id);
-        $('#date').html(data.date);
+        $('#date').html(data.created_at);
         $('#pid').html(data.pid);
         $('#uid').html(data.uid);
         $('#project').html(data.project);
         $('#title').html(data.title);
         $('#note').html(data.note);
-        $('#status').html(data.status);
-        $('#it').html(data.it);
-        $('#enddate').html(data.enddate);
+        $('#enddate').html(data.updated_at);
         $('#nature').html(data.nature);
+        itx=data.it;
+        statusx=data.status;
+  });
+    $.getJSON('/api/select/' + post_id, function(data) {
+        console.log(data);
+      //$('#status').html(data.status);
+      //  $('#it').html(data.it);
+        $("#status").prepend($("<option SELECTED></option>").attr("value", data.status).text(statusx));
+        $("#it").prepend($("<option SELECTED></option>").attr("value", data.it).text(itx));
 
     });
-});
+
+      });
+
+
+
+
 </script>
 @endsection
 
@@ -26,8 +40,10 @@ $(function() {
 @section('content')
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
+      <div class="card-body">
         <h1>維修查詢</h1>
-        <table class="table" style="width: 750px;">
+          <form method="POST" action=" ">
+        <table class="table" style="width: 850px;">
             <thead>
                 <tr>
                     <th >申請日期</th><th id='date'></th>
@@ -42,18 +58,29 @@ $(function() {
             </thead>
           </table>
           <h1>內容</h1>
-          <h1 id= 'note'></h1>
-          <table class="table" style="width: 750px;">
-            <th>處理進度</th> <th >
-            <select ><option value="4">等待處理中
-                     <option value="1">處理中
-                     <option value="2">採購中
-                     <option value="3">已結案
+          <h1 id= 'note'>需求內容</h1>
+          <table class="table" style="width: 750px;" >
+            <th>處理進度</th> <th>
+            <select name='status'id='status'   >
+
+                     <option value="4">等待處理中</option>
+                     <option value="1">處理中</option>
+                     <option value="2">採購中</option>
+                     <option value="3">已結案</option>
             </select></th>
 
-            <th>指派人</th> <th ><input type="text" class="form-control" name="name" value="{{ Auth::user()->name }}" readonly /></input></th>
-            <th>結案日期</th> <th id='enddate'>主旨</th>
+            <th>指派人</th><th >
+            <select  name= 'it' id='it'>
+                     <option value="1">倪堃木弘</option>
+                     <option value="2">楊文捷</option>
+            </select></th>
+            <th>最後更新時間</th> <th id='enddate'>最後更新時間</th>
         </table>
+        <button type="submit" class="btn btn-primary">
+            送出
+        </button>
+
     </div>
+</div>
 </div>
 @endsection
