@@ -25,5 +25,10 @@ class nature extends Model
  protected $hidden = [
 
  ];
+ public function PcrepairToNaure(){
+
+   return $this->belongsTo('App\Pcrepair','nature','id');
+                             //外來鍵 ,表內欄位
+ }
 
 }

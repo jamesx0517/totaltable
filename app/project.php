@@ -25,4 +25,9 @@ class project extends Model
  protected $hidden = [
 
  ];
+ public function PcrepairToProject(){
+
+   return $this->belongsTo('App\Pcrepair','project','id');
+                             //外來鍵 ,表內欄位
+ }
 }
