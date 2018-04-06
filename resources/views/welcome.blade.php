@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    阿 電腦壞了 我要修電腦
+                    阿 電腦壞了 怎麼辦???
                 </div>
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
