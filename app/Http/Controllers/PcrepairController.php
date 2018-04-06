@@ -7,6 +7,7 @@ use App\Pcrepair;
 use App\project;
 use App\nature;
 use Validator;
+use Redirect;
 class PcrepairController extends Controller
 {
     /**
@@ -68,8 +69,9 @@ class PcrepairController extends Controller
             if( $validator->fails()){
               return ['erros'=>$validator->errors()];
             }
-      return    Pcrepair::create($request->all());
-  }
+         Pcrepair::create($request->all());
+        return Redirect::route('form');
+  }             //執行 名為form的route
 
     /**
      * Display the specified resource.
