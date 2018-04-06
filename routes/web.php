@@ -19,9 +19,9 @@ Route::get('/application', function () {
     return view('application');
 });
 
-Route::get('/pcrepairs', function() {
-    return view('form');
-});
+Route::get('/pcrepairs',['as'=>'form' ,function() {
+    return view('form');  //將入route命名
+}]);
 
 Route::get('/pcrepairs/{id}', function($id) {
     return view('repairs-single', [
