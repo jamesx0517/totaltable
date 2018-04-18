@@ -1,13 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Pcrepair;
+use App\User;
 use App\project;
 use App\nature;
 use Validator;
 use Redirect;
+
 class PcrepairController extends Controller
 {
     /**
@@ -16,19 +18,36 @@ class PcrepairController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {  /*
-      $repair=Pcrepair::orderBy('id', 'desc')->where('pid',2)->simplePaginate(10);
-          /*                排序                     單位=2           分頁*/
+    {
 
          $repair=Pcrepair::orderBy('id', 'desc')->simplePaginate(10);
-          foreach ($repair as $item ) {
+          foreach ($repair as $item )
+          {
           $item ->uid=$item->uid()->first()->name;
           $item ->project=$item->project()->first()->name;
           $item ->pid=$item->department()->first()->name;
           $item ->it=$item->it()->first()->name;
           $item ->status=$item->status()->first()->name;
-      }    //item 的status要等於 item  呼叫  status() 帶入name
+          }    //item 的status要等於 item  呼叫  status() 帶入name
         return  $repair;
+    }
+
+    public function Clients($id)
+    {
+          $uid=User::findOrFail($id)->id;
+
+          $repair=Pcrepair::orderBy('id', 'desc')->where('uid',$uid)->simplePaginate(10);
+              /*                排序                     單位=2           分頁*/
+          foreach ($repair as $item )
+          {
+          $item ->uid=$item->uid()->first()->name;
+          $item ->project=$item->project()->first()->name;
+          $item ->pid=$item->department()->first()->name;
+          $item ->it=$item->it()->first()->name;
+          $item ->status=$item->status()->first()->name;
+          }    //item 的status要等於 item  呼叫  status() 帶入name
+        return  $repair;
+
     }
 
 
@@ -70,7 +89,7 @@ class PcrepairController extends Controller
               return ['erros'=>$validator->errors()];
             }
          Pcrepair::create($request->all());
-        return Redirect::route('form');
+        return Redirect::route('clients');
   }             //執行 名為form的route
 
     /**
@@ -90,7 +109,8 @@ class PcrepairController extends Controller
          $item ->status=$item->status()->first()->name;
          $item ->nature =$item->nature()->first()->name;
 
-       return  $item;
+         return $item;
+
     }
 
     public function it($id)
@@ -112,7 +132,8 @@ class PcrepairController extends Controller
      */
     public function edit($id)
     {
-        //
+      $data = Pcrepair::find($id);
+      return view('case', compact('data'));
     }
 
     /**
@@ -124,7 +145,9 @@ class PcrepairController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $data = $request->all();
+     Pcrepair::find($id)->update($data);
+     return redirect('/pcrepairs/');
     }
 
     /**
