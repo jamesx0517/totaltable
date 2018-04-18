@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('script')
 <script>
-var post_id = {{ $id }};
+var post_id = {{ $data->id }};
 var itx;
 var status;
 $(function() {
@@ -42,7 +42,7 @@ $(function() {
     <div class="col-md-8 col-md-offset-2">
       <div class="card-body">
         <h1>維修查詢</h1>
-          <form method="POST" action=" ">
+          <form method="POST" action="/it/{{ $data->id }}">
         <table class="table" style="width: 850px;">
             <thead>
                 <tr>
@@ -76,6 +76,8 @@ $(function() {
             </select></th>
             <th>最後更新時間</th> <th id='enddate'>最後更新時間</th>
         </table>
+        {{ csrf_field() }}
+        {{ method_field('PATCH') }}
         <button type="submit" class="btn btn-primary">
             送出
         </button>
