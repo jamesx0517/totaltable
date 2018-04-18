@@ -22,19 +22,24 @@ Route::get('/application', function () {
 Route::get('/pcrepairs',['as'=>'form' ,function() {
     return view('form');  //將入route命名
 }]);
+Route::get('/clients',['as'=>'clients' ,function() {
+    return view('clients');
+  }]);
+  Route::get('/clients/{id}',function($id) {
+      return view('clients', [
+          'id' => $id
+      ]);
+  });
 
-Route::get('/pcrepairs/{id}', function($id) {
+Route::get('/pcrepairs/{id}',function($id) {
     return view('repairs-single', [
         'id' => $id
     ]);
 });
 
-Route::get('/it/{id}', function($id) {
-    return view('case ', [
-        'id' => $id
-    ]);
-});
-Route::patch('/it/{id}','PcrepairController@itEdit');
+Route::get('/it/{id}','PcrepairController@edit');
+Route::patch('/it/{id}','PcrepairController@update');
+
 
 Auth::routes();
 
