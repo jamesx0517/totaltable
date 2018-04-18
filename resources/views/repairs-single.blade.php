@@ -6,7 +6,7 @@ $(function() {
     $.getJSON('/api/pcrepairs/' + post_id, function(data) {
         console.log(data);
         $('#id').html(data.id);
-        $('#date').html(data.date);
+        $('#date').html(data.created_at);
         $('#pid').html(data.pid);
         $('#uid').html(data.uid);
         $('#project').html(data.project);
@@ -14,7 +14,7 @@ $(function() {
         $('#note').html(data.note);
         $('#status').html(data.status);
         $('#it').html(data.it);
-        $('#enddate').html(data.enddate);
+        $('#enddate').html(data.updated_at);
         $('#nature').html(data.nature);
 
     });
@@ -27,7 +27,7 @@ $(function() {
 <div class="container">
     <div class="col-md-8 col-md-offset-2">
         <h1>維修查詢</h1>
-        <table class="table" style="width: 750px;">
+        <table class="table" style="width: 850px;">
             <thead>
                 <tr>
                     <th >申請日期</th><th id='date'></th>
@@ -47,7 +47,7 @@ $(function() {
             <th>處理進度</th> <th id='status'>主旨</th>
 
             <th>指派人</th> <th id = 'it' ></th>
-            <th>結案日期</th> <th id='enddate'>主旨</th>
+            <th>最後更新時間</th> <th id='enddate'><</th>
         </table>
     </div>
 </div>
